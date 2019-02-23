@@ -12,7 +12,13 @@
 </script>
 
 <script>
-  function fetchUser
+  function fetchUser(){
+    return fetch('https://api.github.com/users').then(response => response.json());
+  }
+  
+  fetchUser().then(function (json) {
+    console.log(json);
+  });
 
 </script>
 <body>

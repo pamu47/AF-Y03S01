@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab02</title>
+</head>
+<script>
+  function Vehicle(type){
+    this.type = type;
+    Vehicle.VehicleCount++;
+
+  }
+
+  Vehicle.prototype.drive = function () {
+    console.log('Vehicle is driving');
+  }
+
+  Vehicle.VehicleCount = 0;
+
+  var vehicle = new Vehicle('Toyota');
+  console.log(Vehicle.VehicleCount);
+  console.log(vehicle.type);
+  
+  function  Car() {
+    
+  }
+
+  Car.prototype = Object.create(Vehicle.prototype);
+  Car.prototype.constructor = Car;
+
+  Car.prototype.balanceWheels = function () {
+    console.log('Wheels are balanced');
+  }
+
+  Car car1 = new Car();
+
+
+
+
+</script>
+<body>
+
+</body>
+</html>
