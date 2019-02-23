@@ -13,7 +13,7 @@
 
   Vehicle.prototype.drive = function () {
     console.log('Vehicle is driving');
-  }
+  };
 
   Vehicle.VehicleCount = 0;
 
@@ -21,8 +21,8 @@
   console.log(Vehicle.VehicleCount);
   console.log(vehicle.type);
   
-  function  Car() {
-    
+  function  Car(type) {
+    Vehicle.call(this,type);
   }
 
   Car.prototype = Object.create(Vehicle.prototype);
@@ -32,7 +32,16 @@
     console.log('Wheels are balanced');
   }
 
-  Car car1 = new Car();
+  var car1= new Car('Nissan');
+
+  car1.balanceWheels();
+  car1.drive();
+
+
+  console.log(car1.type,Vehicle.VehicleCount);
+
+
+
 
 
 
