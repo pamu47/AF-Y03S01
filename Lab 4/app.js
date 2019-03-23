@@ -1,6 +1,15 @@
 const os = require('os')
 const fs = require('fs')
 const fileName = './test.txt'
+const outFileName = './test-copy.txt'
+
+//Copy the context of a file to another using Streams
+const readStream = fs.createReadStream(fileName)
+const writeStream = fs.createWriteStream(outFileName)
+
+readStream.pipe(writeStream)
+
+
 
 //...Obtain system overview...
 //console.log('Architecture :' +os.arch())
@@ -14,6 +23,7 @@ fs.readFile(fileName, (err,data) => {
     }
     console.log(data.toString())
 })
+
 
 
 
