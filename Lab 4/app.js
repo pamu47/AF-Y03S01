@@ -31,6 +31,19 @@ readStream.on('data',data => {
 //creating the http server
 http.createServer((req,res) => {
     res.setHeader('Content-type','text/html')
-    res.write('<h1>Hello World</h1>')
-    res.end();
-}).listen(3000);
+    switch(req.method){
+        case 'GET':
+            res.write('<h1>Hello world</h1>')
+            res.end()
+            break
+        case 'POST':
+            req.on('data',data => {
+                res.write('<h1>hello ' +data+ '</h1>')
+                res.end()
+            })
+            break
+    }
+}).listen(3000, err => {
+    console.log('Server is running on port 3000')
+});
+
